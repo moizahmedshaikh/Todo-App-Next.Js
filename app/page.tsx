@@ -165,7 +165,7 @@ export default function Home() {
           maintask.map((t, i) => (
             <div
               key={i}
-              className={`bg-[#0F172A] sm:w-[80%] w-[80%] py-3 px-6 items-center rounded-xl mx-auto sm:flex justify-between my-5 text-white`}
+              className={`bg-[#0F172A] sm:w-[80%] w-[80%] py-4  px-6 items-center rounded-xl mx-auto sm:flex justify-between my-5 text-white`}
             >
               <button
                 onClick={() => toggleCompletion(i)}
@@ -183,13 +183,27 @@ export default function Home() {
                 <p className="line-clamp-2">{t.desc}</p>
               </div>
 
-              <div className="flex justify-between gap-4 mt-5">
+              <div className="flex justify-between sm:gap-4 gap-2 sm:mt-0 mt-10">
                 <button
                   onClick={() => editHandler(i)}
                   className="bg-[#FFC107] hover:bg-[#FFA000] text-white px-3 py-2 rounded-lg text-bold"
                 >
                   <FaEdit className="text-[1.4rem]" />
                 </button>
+
+                <button
+                onClick={() => toggleCompletion(i)}
+                className={`${
+                  t.completed
+                    ? "bg-[#4CAF50] hover:bg-[#388E3C]"
+                    : "bg-[#2196F3] hover:bg-[#1976D2]"
+                } text-white px-3 py-2 rounded-lg text-bold sm:hidden block`}
+              >
+                {t.completed ? "Completed" : <AiOutlineCheck className="text-[1.4rem]" />}
+              </button>
+
+
+
                 <button
                   onClick={() => deleteHandler(i)}
                   className="bg-[#F44336] hover:bg-[#D32F2F] text-white px-3 py-2 rounded-lg text-bold"
